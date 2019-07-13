@@ -27,7 +27,7 @@ class MixPugTask extends Task {
                 excludePath: null
             };
         }
-        
+
         // Set destination folder
         this.dest = dest;
 
@@ -74,7 +74,7 @@ class MixPugTask extends Task {
 
     /**
      * Compiles a single pug template
-     * 
+     *
      * @param {string} src Path to the pug source file
      * @param {number} index
      */
@@ -83,13 +83,13 @@ class MixPugTask extends Task {
         let output = this.assets[index];
 
         try {
-        
+
             let template = pug.compileFile(file.path(), this.pugOptions);
 
             let html = template(
                 this.seeder.locals
             );
-        
+
             fs.writeFileSync(output.path(), html);
 
             this.onSuccess();
@@ -101,7 +101,7 @@ class MixPugTask extends Task {
 
     /**
      * Updates seeder with changed data files
-     * 
+     *
      */
     createSeeder() {
         return new PugSeeder(this.seedPath)
@@ -110,8 +110,8 @@ class MixPugTask extends Task {
 
     /**
      * Recompile on change when using watch
-     * 
-     * @param {string} updatedFile 
+     *
+     * @param {string} updatedFile
      */
     onChange(updatedFile) {
         this.seeder = this.createSeeder();
@@ -157,25 +157,25 @@ class MixPugTask extends Task {
     }
 
     relativePathFromSource(filePath, excludePath) {
-         excludePath = excludePath || 'resources/assets/pug';
-         return filePath.split(excludePath).pop();
+        excludePath = excludePath || 'resources/assets/pug';
+
+        return filePath.split(excludePath).pop();
     }
 
     prepareAssets(src) {
         let file = new File(src);
         let pathFromBase = this.relativePathFromSource(file.base(), this.excludePath);
-        let baseDir = path.join(pathFromBase, this.dest);
-
-        if (!File.exists(baseDir)) {
-            new File(baseDir).makeDirectories();
-        }
+        let baseDir = path.join(this.dest, pathFromBase);
 
         let output = path.join(baseDir, file.nameWithoutExtension() + this.extension);
         let asset = new File(output);
 
+        if (!File.exists(baseDir)) {
+            asset.makeDirectories();
+        }
+
         return asset;
     }
-
 }
 
 module.exports = MixPugTask;

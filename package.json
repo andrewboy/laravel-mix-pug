@@ -8,19 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matejsvajger/laravel-mix-pug.git"
+    "url": "git+https://github.com/andrewboy/laravel-mix-pug.git"
   },
   "keywords": [
     "laravel",
     "mix",
     "pug"
   ],
-  "author": "Matej Svajger <hello@matejsvajger.com>",
+  "author": "András József Beck <andras.jozsef.beck@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/matejsvajger/laravel-mix-pug/issues"
+    "url": "https://github.com/andrewboy/laravel-mix-pug/issues"
   },
-  "homepage": "https://github.com/matejsvajger/laravel-mix-pug#readme",
+  "homepage": "https://github.com/andrewboy/laravel-mix-pug#readme",
   "dependencies": {
     "foldero": "^0.1.1",
     "glob": "^7.1.2",
