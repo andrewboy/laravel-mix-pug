@@ -3,6 +3,7 @@ const _ = require('lodash');
 const glob = require('glob');
 const yaml = require('js-yaml');
 const foldero = require('foldero');
+const faker = require('faker');
 
 class PugSeeder {
 
@@ -11,6 +12,7 @@ class PugSeeder {
         this.path = path;
         this.files = path ? glob.sync(path + '/**/*.+(json|yaml|yml)') : [];
         this.locals = {
+            faker: faker,
             seed: path ? this.parse(path) : null
         };
     }
