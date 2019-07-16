@@ -159,7 +159,7 @@ class MixPugTask extends Task {
     relativePathFromSource(filePath, excludePath) {
         excludePath = excludePath || 'resources/assets/pug';
 
-        return filePath.split(excludePath).pop();
+        return filePath.split(path.join(excludePath)).pop();
     }
 
     prepareAssets(src) {
