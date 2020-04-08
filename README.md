@@ -37,7 +37,7 @@ mix.pug('src/*.pug', 'dist', {seeds:'src/seeds'});
 And if you have a file `demo.yml` in there all the content will be available in your template under
 
 ```pug
-a(href=seed.demo.anchor.link) seed.demo.anchor.name
+a(href=seed.demo.anchor.link) #{seed.demo.anchor.name}
 ```
 
 ### locals
